@@ -1,0 +1,15 @@
+{
+	"name": "Nhat-Hao Tran",
+	"logo": "../public/favicon/favicon-32x32.png",
+	
+	"username": {
+		"github": "tranlynhathao",
+		"medium": "@--nhathao0402"
+	},
+
+	"portfolio": { 
+		"forkthis": "Repository 💤",
+		"repo_html": "https://github.com/tranlynhathao/nhathao_tran",
+		"repo_api": "https://api.github.com/repos/tranlynhathao/nhathao_tran"
+	}
+}

@@ -1,0 +1,235 @@
+@import '../scss/_mixins';
+
+.container {
+	display: flex;
+	flex-direction: row; /* Align sections in a row */
+	justify-content: space-around; /* Distribute space evenly */
+	align-items: center; /* Align items vertically in the center */
+	position: relative;
+	flex-wrap: wrap; /* Wrap elements if needed on smaller screens */
+
+	> div {
+		display: flex;
+		flex-direction: row;
+		gap: var(--size-3x);
+	}
+
+	h4 {
+		margin-bottom: var(--size-1x);
+	}
+
+	a {
+		font-size: 0.875rem;
+		font-weight: 600;
+		color: var(--primary);
+
+		&:hover {
+			color: var(--primary-bright);
+		}
+	}
+
+	p {
+		font-size: 0.875rem;
+	}
+
+	.sections {
+		$gap: 2rem;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between; /* Space out sections */
+		gap: $gap;
+		flex: 1; /* Allow sections to grow */
+
+		svg {
+			height: 0.875rem;
+			vertical-align: -0.1rem;
+			margin-left: 0.125rem;
+		}
+
+		ul {
+			flex: 1; /* Allow lists to grow */
+			max-width: 30%; /* Optional: Adjust as needed */
+
+			li {
+				overflow-wrap: break-word;
+				margin-bottom: var(--size-2-);
+			}
+		}
+	}
+
+  .social {
+    h4 {
+        margin-left: 7rem; /* Adjust this value to align "Social" with the icons */
+    }
+  }
+
+	.socialList {
+		display: flex;
+		flex-direction: row;
+		gap: 1rem;
+    margin-left: 7rem;
+
+		svg {
+			height: 2rem;
+		}
+	}
+
+	.svg-inline--fa.fa-code-branch {
+		margin-left: 1rem;
+
+		.fa-secondary {
+			fill: #a371f7;
+			opacity: 1;
+		}
+	}
+
+	.github {
+		* {
+			font-size: 1rem;
+			font-family: var(--font-accent);
+			font-weight: 600;
+			letter-spacing: -0.01rem;
+		}
+
+		> a {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			width: fit-content;
+			margin: 0 auto;
+			gap: var(--size-2-);
+			filter: grayscale(1);
+
+			&:hover {
+				filter: grayscale(0);
+			}
+
+			ul {
+				display: flex;
+				flex-direction: row;
+				gap: 1rem;
+			}
+		}
+	}
+}
+
+
+@include media($max: 992px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .sections {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center all section content horizontally */
+            text-align: center;
+            gap: 3rem;
+
+            .socialList {
+                justify-content: center;
+                display: flex;
+                gap: 1rem;
+                align-items: center; /* Center social icons vertically */
+            }
+            .social, .socialList, .social h4 {
+                margin-left: 0;            }
+
+            ul {
+                width: auto; /* Allow the list to shrink to fit the content */
+                display: flex;
+                flex-direction: column;
+                align-items: center; /* Center list items horizontally */
+                justify-content: center; /* Center list items vertically */
+            }
+
+            li {
+                text-align: center; /* Center the text inside list items */
+            }
+        }
+
+        .acknowledgment {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 100%; /* Ensure it spans full width for better centering */
+        }
+
+        .social {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            margin-bottom: 1rem; /* Adjust margin to space out sections */
+        }
+
+        .copyright {
+            margin-top: 1rem;
+            text-align: center;
+            width: 100%;
+        }
+    }
+}
+
+@include media($max: $mobile) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .sections {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center all section content horizontally */
+            text-align: center;
+            gap: 3rem;
+
+            .socialList {
+                justify-content: center;
+                display: flex;
+                gap: 1rem;
+                align-items: center; /* Center social icons vertically */
+            }
+            .social, .socialList, .social h4 {
+                margin-left: 0;
+            }
+
+            ul {
+                width: auto; /* Allow the list to shrink to fit the content */
+                display: flex;
+                flex-direction: column;
+                align-items: center; /* Center list items horizontally */
+                justify-content: center; /* Center list items vertically */
+            }
+
+            li {
+                text-align: center; /* Center the text inside list items */
+            }
+        }
+
+        .acknowledgment {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 100%; /* Ensure it spans full width for better centering */
+        }
+
+        .social {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            margin-bottom: 1rem; /* Adjust margin to space out sections */
+        }
+
+        .copyright {
+            margin-top: 1rem;
+            text-align: center;
+            width: 100%;
+        }
+    }
+}
+
