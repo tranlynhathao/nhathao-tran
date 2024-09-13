@@ -19,48 +19,44 @@
         transform: translateY(-100%);
     }
 
-    // Điều chỉnh menuHeader
     .menuHeader {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         position: relative;
 
-        // Giảm margin của các phần tử bên trong menuHeader để thu hẹp chiều cao
         a {
             display: flex;
             align-items: center;
-            margin: 0.5rem; // Giảm từ 1rem xuống 0.5rem để giảm chiều cao
+            margin: 1rem;
+
             font-weight: 600;
             font-family: var(--font-sans);
             color: var(--primary-dim);
         }
     }
 
-    // Điều chỉnh menu
     .menu {
         display: flex;
         justify-content: space-between;
         max-width: var(--reading-width);
-        margin: 0.5rem auto; // Giảm margin để thu hẹp chiều cao tổng thể
+        margin: 1rem auto;
         border-radius: 1rem;
         position: relative;
         backdrop-filter: blur(10px);
-
-        // Đặt chiều cao cố định cho menu
-        height: 50px; // Giới hạn chiều cao navbar
+        border-radius: 1rem;
 
         a {
             font-family: var(--font-accent);
             font-weight: 700;
             color: var(--primary);
-            text-decoration: none;
+            text-decoration: none; // Đảm bảo không có gạch chân mặc định
 
             &.active,
             &:hover {
-                color: var(--primary-bright);
+                color: var(--primary-bright); // Màu khi hover hoặc khi là liên kết hiện tại
                 text-decoration: underline;
-                text-underline-offset: 4px;
+                text-underline-offset: 4px; // Khoảng cách từ văn bản đến gạch chân
             }
         }
 
@@ -86,13 +82,14 @@
             justify-content: flex-end;
             align-items: center;
             text-align: center;
-            gap: 2rem; // Có thể giảm gap nếu cần để tiết kiệm không gian
+            gap: 4rem;
 
             li {
-                // Có thể điều chỉnh kiểu cho li nếu cần
+                // Thêm các kiểu cho li nếu cần
             }
 
             a {
+                // Áp dụng gạch chân cho liên kết khi hover hoặc khi là liên kết hiện tại
                 &:hover {
                     text-decoration: underline;
                     text-underline-offset: 4px;
