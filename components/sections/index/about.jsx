@@ -45,7 +45,7 @@ export default function About() {
 							copy="In addition to my technical expertise in software development, machine learning model training, and computer vision, I also have experience in project management and task delegation within a shared mission."
 						/>
 						<BadgesBlock 
-							title="Reasearch and planning" 
+							title="Technical Expertise" 
 							containerClass={about.container}
 							list={methods} 
 							fullContainer="fullContainer"
@@ -62,11 +62,11 @@ export default function About() {
 	)
 }
 
-const methods 	= [
-	{ key: 'planet-moon', 		name: 'User Research', 		type: 'fad' },
-	{ key: 'qrcode', 			name: 'Digital Strategy', 	type: 'fad' },
-	{ key: 'window', 			name: 'Design Systems', 	type: 'fad' },
-	{ key: 'cubes', 			name: 'Product Strategy', 	type: 'far' },
-	{ key: 'layer-plus', 		name: 'Brand Strategy', 	type: 'fad' },
-	{ key: 'solar-system', 		name: 'Operations', 		type: 'fad' },
-]
+const methods = [
+	{ key: 'search', 			name: 'Research', 					type: 'fad' },        
+	{ key: 'robot', 			name: 'AI Engineering', 			type: 'fad' },      
+	{ key: 'laptop-code', 		name: 'Software Development', 		type: 'fad' },
+	{ key: 'cogs', 				name: 'System Programming', 		type: 'fad' },    
+	{ key: 'tasks', 			name: 'Project Management', 		type: 'fad' },    
+	{ key: 'database', 			name: 'Data Science', 				type: 'fad' },    
+];
