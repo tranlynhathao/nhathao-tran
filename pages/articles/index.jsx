@@ -1,36 +1,57 @@
-import { useState, useEffect } from "react"
-import Recent from '../../components/sections/articles/recent'
-import Color from '../../components/utils/page.colors.util'
-import colors from '../../content/articles/_colors.json'
-import settings from '../../content/_settings.json'
+import fs from 'fs'
+import path from 'path'
+import matter from 'gray-matter'
+import Section from '../../components/sections/section'
+import css from '../../styles/sections/articles/recent.module.scss'
 
-//
-export default function Articles({ mediumArticles }) {
-	return (
-		<>
-			<Color colors={colors} />
-			<Recent mediumArticles={mediumArticles}/>
-		</>
-	)
+// Path to your content directory
+const articlesDirectory = path.join(process.cwd(), 'content/articles')
+
+export async function getStaticProps() {
+  // Read all files from the directory
+  const filenames = fs.readdirSync(articlesDirectory)
+  
+  // Get data from all articles
+  const articles = filenames.map(filename => {
+    const filePath = path.join(articlesDirectory, filename)
+    const fileContent = fs.readFileSync(filePath, 'utf-8')
+    const { data } = matter(fileContent)
+
+    // Ensure all properties are defined and provide default values if needed
+    return {
+      title: data.title || 'Untitled',
+      pubDate: data.pubDate || new Date().toISOString(),
+      link: `/articles/${filename.replace(/\.mdx$/, '')}`,
+      author: data.author || 'Unknown',
+      thumbnail: data.thumbnail || '/default-thumbnail.jpg',
+      categories: data.categories || []
+    }
+  })
+
+  return {
+    props: {
+      articles
+    }
+  }
 }
 
-// This gets called on every request
-export async function getServerSideProps({ res }) {
-
-	res.setHeader(
-		'Cache-Control',
-		'public, s-maxage=600, stale-while-revalidate=59'
-	)
-
-	console.log(settings.username.medium)
-
-	const [ mediumRSS ] = await Promise.all( [
-		fetch(`https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/${settings.username.medium}`),
-	] )
-	
-	let [ mediumArticles ] = await Promise.all( [
-		mediumRSS.json(),
-	] )
-
-	return { props: { mediumArticles } }
+export default function Articles({ articles }) {
+  return (
+    <Section>
+      <div className={css.articlesContainer}>
+        {articles.map(({ title, pubDate, link, author, thumbnail, categories }) => (
+          <article key={link} className={css.article}>
+            <img src={thumbnail} alt="Article thumbnail" />
+            <h2><a href={link}>{title}</a></h2>
+            <p>By {author} on {new Date(pubDate).toDateString()}</p>
+            <div>
+              {categories.map((category, index) => (
+                <span key={index}>{category}</span>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </Section>
+  )
 }

@@ -9,14 +9,14 @@ import colors from '../content/index/_colors.json';
 import ResumeButton from '../components/ResumeButton';  // Import the ResumeButton component
 
 export default function HomePage() {
-    return (
-        <>
-            <Color colors={colors} />
-            <Hero />
-            {/* <FeaturedProjects /> */}
-            <About />
-            {/*<Technical />*/}
-            <ResumeButton showIframe={false} />  {/* Hide iframe on homepage */}
-        </>
-    );
+  return (
+    <>
+      <Color colors={colors} />
+      <Hero />
+      {/* <FeaturedProjects /> */}
+      <About />
+      {/*<Technical />*/}
+      <ResumeButton showIframe={false} />  {/* Hide iframe on homepage */}
+    </>
+  );
 }
