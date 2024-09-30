@@ -29,6 +29,7 @@
 		"@uiw/react-markdown-preview": "^4.1.7",
 		"@vercel/analytics": "^0.1.6",
 		"babel-plugin-macros": "^3.1.0",
+		"classnames": "^2.5.1",
 		"devicon": "^2.15.1",
 		"firebase": "^10.13.1",
 		"framer-motion": "^8.5.0",

@@ -1,217 +1,230 @@
 @import '../scss/_mixins';
 
 .container {
-	position: fixed;
-	z-index: 10;
-	margin-left: calc(50% - 50vw);
-  	margin-right: calc(50% - 50vw);
-  	width: 100vw;
-  	max-width: 100vw;
-	padding: 0.25rem 0.75rem; // Giảm padding thêm một chút
+  position: fixed;
+  z-index: 10;
+  margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    width: 100vw;
+    max-width: 100vw;
+  padding: 0.25rem 0.75rem;
 
-	&:not(.hidden) {
-		transition: transform, cubic-bezier(0.4, 0, 0.2, 1), 300ms;
-		transform: translateY(0%);
-	}
+  &:not(.hidden) {
+    transition: transform, cubic-bezier(0.4, 0, 0.2, 1), 300ms;
+    transform: translateY(0%);
+  }
 
-	&.hidden {
-		transition: transform, cubic-bezier(0.4, 0, 0.2, 1), 300ms;
-		transition-delay: 275ms;
-		transform: translateY(-100%);
-	}
+  &.hidden {
+    transition: transform, cubic-bezier(0.4, 0, 0.2, 1), 300ms;
+    transition-delay: 275ms;
+    transform: translateY(-100%);
+  }
 
-	.menuHeader {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		position: relative;
-		align-items: center; // Giữ phần tử nằm giữa
+  .menuHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: relative;
+    align-items: center;
 
-		a {
-			display: flex;
-			align-items: center;
-			margin: 0.25rem 0.75rem; // Giảm margin thêm một chút
-			font-weight: 600;
-			font-family: var(--font-sans);
-			color: var(--primary-dim);
-		}
-	}
+    a {
+      display: flex;
+      align-items: center;
+      margin: 0.25rem 0.75rem;
+      font-weight: 600;
+      font-family: var(--font-sans);
+      color: var(--primary-dim);
+    }
+  }
 
-	.mobileButton {
-		display: none;
-	}
+  .mobileButton {
+    display: none;
+  }
 
-	.menu {
-		display: flex;
-		justify-content: space-between;
-		max-width: var(--reading-width);
-		margin: 0.25rem auto; // Giảm margin trên/dưới thêm một chút
-		border-radius: 1rem;
-		position: relative;
-		backdrop-filter: blur(10px);
-		border-radius: 1rem;
-		gap: 0.75rem; // Giảm khoảng cách giữa các link thêm một chút
+  .menu {
+    display: flex;
+    justify-content: space-between;
+    max-width: var(--reading-width);
+    margin: 0.25rem auto;
+    border-radius: 1rem;
+    position: relative;
+    backdrop-filter: blur(10px);
+    border-radius: 1rem;
+    gap: 0.75rem;
 
-		a {
-			font-family: var(--font-accent);
-			font-weight: 700;
-			color: var(--primary);
-			text-decoration: none;
-			padding: 0.25rem 0.75rem; // Giảm padding thêm một chút
+    a {
+      font-family: var(--font-accent);
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+      padding: 0.25rem 0.75rem;
 
-			&:hover {
-				color: var(--primary-bright);
-				text-decoration: underline;
-				text-underline-offset: 2px; // Điều chỉnh khoảng cách underline
-			}
-		}
+      &:hover {
+        color: var(--primary-bright);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
+    }
 
-		&:after {
-			content: '';
-			position: absolute;
-			z-index: -1;
-			top: 0;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			background: var(--primary-dark);
-			opacity: 50%;
-			border-radius: 1rem;
-		}
-	}
+    &:after {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--primary-dark);
+      opacity: 50%;
+      border-radius: 1rem;
+    }
+  }
 
-	.menuContent {
-		ul {
-			height: 100%;
-			display: flex;
-			flex-direction: row;
-			justify-content: flex-end;
-			align-items: center;
-			text-align: center;
-			gap: 1.5rem; // Giảm khoảng cách giữa các phần tử trong menu
-		}
-	}
+  .menuContent {
+    ul {
+      height: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center;
+      text-align: center;
+      gap: 1.5rem;
+    }
+  }
 
-	.menuBlackout {
-		position: fixed;
-		top: 0;
-		left: 0;
-		right: 0;
-		height: 0;
-		z-index: -1;
+  .menuBlackout {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 0;
+    z-index: -1;
 
-		&[data-open="true"] {
-			height: 100vh;
-		}
-	}
+    &[data-open="true"] {
+      height: 100vh;
+    }
+  }
 
-	.mobileToggle {
-		z-index: 1;
-		display: none;
-		position: relative;
-		width: 50px;
-		height: 50px;
-		cursor: pointer;
-		transform: rotateY(180deg);
+  .mobileToggle {
+    z-index: 1;
+    display: none;
+    position: relative;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transform: rotateY(180deg);
 
-		div {
-			margin: auto;
-			position: absolute;
-			top: 0;
-			right: 0;
-			left: 0;
-			bottom: 0;
-			width: 22px;
-			height: 12px;
-		}
+    div {
+      margin: auto;
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      width: 22px;
+      height: 12px;
+    }
 
-		span {
-			position: absolute;
-			display: block;
-			width: 100%;
-			height: 2px;
-			background-color: var(--primary);
-			border-radius: 1px;
-			transition: all 0.2s cubic-bezier(0.1, 0.82, 0.76, 0.965);
+    span {
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: 2px;
+      background-color: var(--primary);
+      border-radius: 1px;
+      transition: all 0.2s cubic-bezier(0.1, 0.82, 0.76, 0.965);
 
-			&:first-of-type {
-				top: 0;
-			}
-			&:last-of-type {
-				bottom: 0;
-			}
-		}
+      &:first-of-type {
+        top: 0;
+      }
+      &:last-of-type {
+        bottom: 0;
+      }
+    }
 
-		&[data-open="true"] {
-			span {
-				&:first-of-type {
-					transform: rotate(45deg);
-					top: 5px;
-				}
-				&:last-of-type {
-					transform: rotate(-45deg);
-					bottom: 5px;
-				}
-			}
-		}
+    &[data-open="true"] {
+      span {
+        &:first-of-type {
+          transform: rotate(45deg);
+          top: 5px;
+        }
+        &:last-of-type {
+          transform: rotate(-45deg);
+          bottom: 5px;
+        }
+      }
+    }
 
-		&[data-open="true"]:hover span:first-of-type,
-		&[data-open="true"]:hover span:last-of-type {
-			width: 22px;
-		}
+    &[data-open="true"]:hover span:first-of-type,
+    &[data-open="true"]:hover span:last-of-type {
+      width: 22px;
+    }
 
-		&:hover {
-			span:first-of-type {
-				width: 12px;
-			}
+    &:hover {
+      span:first-of-type {
+        width: 12px;
+      }
 
-			span:last-of-type {
-				width: 26px;
-			}
-		}
-	}
+      span:last-of-type {
+        width: 26px;
+      }
+    }
+  }
+}
+
+.activeLink {
+    a {
+        color: var(--primary-bright) !important;
+        font-weight: bold;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+    }
+
+    background-color: rgba(255, 255, 0, 0.3);
+    border-radius: 0.5rem;
+    padding: 0.25rem;
 }
 
 @include media($max: $mobile) {
-	.container {
-		padding-left: 0.75rem;
-		padding-right: 0.75rem;
-		width: 100%;
+  .container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    width: 100%;
 
-		&.hidden {
-			.menuBlackout {
-				height: 0;
-			}
-		}
+    &.hidden {
+      .menuBlackout {
+        height: 0;
+      }
+    }
 
-		.menuContainer {
-			position: relative;
-		}
-		.mobileToggle {
-			display: block;
-		}
-		.menuHeader {
-			width: 100%;
-		}
-		.menu {
-			flex-direction: column;
-		}
-		.menuContent {
-			transition: transform, cubic-bezier(0.4, 0, 0.2, 1), 300ms;
-			max-height: 0vh;
-			overflow: hidden;
+    .menuContainer {
+      position: relative;
+    }
+    .mobileToggle {
+      display: block;
+    }
+    .menuHeader {
+      width: 100%;
+    }
+    .menu {
+      flex-direction: column;
+    }
+    .menuContent {
+      transition: transform, cubic-bezier(0.4, 0, 0.2, 1), 300ms;
+      max-height: 0vh;
+      overflow: hidden;
 
-			&[data-open="true"] {
-				transition: transform, cubic-bezier(0.4, 0, 0.2, 1), 300ms;
-				max-height: 100vh;
-				transform: translate3d(0px,0px,1px);
-			}
+      &[data-open="true"] {
+        transition: transform, cubic-bezier(0.4, 0, 0.2, 1), 300ms;
+        max-height: 100vh;
+        transform: translate3d(0px,0px,1px);
+      }
 
-			ul {
-				flex-direction: column;
-				gap: 1.5rem; // Giảm thêm một chút
-				margin: 1.5rem; // Giảm thêm một chút
-			}
-		}
-	}
+      ul {
+        flex-direction: column;
+        gap: 1.5rem;
+        margin: 1.5rem;
+      }
+    }
+  }
 }

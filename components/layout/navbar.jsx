@@ -6,97 +6,55 @@ import settings from '../../content/_settings.json';
 import content from '../../content/navbar.json';
 import css from '../../styles/structure/navbar.module.scss';
 import Logo from '../Logo';
+import classNames from 'classnames';
 
 export default function Navbar() {
   const router = useRouter();
-  const [menuState, menuToggle] = useState(false);
+  const [menuState, setMenuState] = useState(false);
+  const [lastY, setLastY] = useState(0);
   const currentPath = router.pathname;
 
+  // Reset menu when route changes
   useEffect(() => {
-    menuToggle(false);
-  }, []);
+    setMenuState(false);
+  }, [router.pathname]);
 
+  // Handle route change events
   useEffect(() => {
-    class RouteEvents {
-      constructor() {
-        console.log(
-          '%c☰  Navigation Router Events Loaded',
-          'background: #060708; color: #fff; padding: .125rem .75rem; border-radius: 5px; font-weight: 900; '
-        );
-        this.addEventListeners();
-      }
+    const handleRouteChange = () => setMenuState(false);
 
-      closeMenu() {
-        menuToggle(false);
-      }
-
-      addEventListeners() {
-        router.events.on('routeChangeComplete', this.closeMenu);
-      }
-
-      removeEventListeners() {
-        router.events.off('routeChangeComplete', this.closeMenu);
-      }
-    }
-
-    const routeEvents = new RouteEvents();
+    router.events.on('routeChangeComplete', handleRouteChange);
 
     return () => {
-      routeEvents.removeEventListeners();
+      router.events.off('routeChangeComplete', handleRouteChange);
     };
   }, [router.events]);
 
+  // Handle scroll events
   useEffect(() => {
-    class ScrollEvents {
-      constructor() {
-        console.log(
-          '%c▼  Navigation Scroll Events Loaded',
-          'background: #060708; color: #fff; padding: .125rem .75rem; border-radius: 5px; font-weight: 900; '
-        );
+    const nav = document.querySelector('nav');
 
-        window.sticky = {};
-        window.sticky.nav = document.querySelector(`nav`);
+    const handleScroll = () => {
+      const hiddenAt = window.innerHeight / 2;
 
-        this.addEventListeners();
+      if (window.scrollY > lastY && window.scrollY > hiddenAt && !nav.classList.contains(css.hidden)) {
+        nav.classList.add(css.hidden);
+      } else if (window.scrollY < lastY && nav.classList.contains(css.hidden)) {
+        nav.classList.remove(css.hidden);
       }
 
-      addEventListeners() {
-        if (window.sticky.nav) {
-          window.addEventListener('DOMContentLoaded', this.maybeHideNav, false);
-          document.addEventListener('scroll', this.maybeHideNav, false);
-        }
-      }
+      setLastY(window.scrollY);
+    };
 
-      removeEventListeners() {
-        if (window.sticky.nav) {
-          window.removeEventListener('DOMContentLoaded', this.maybeHideNav, false);
-          document.removeEventListener('scroll', this.maybeHideNav, false);
-        }
-      }
-
-      maybeHideNav() {
-        const nC = window.sticky.nav.classList;
-        const hiddenAt = (window.innerHeight / 2);
-
-        if (window.scrollY > this.lastY && window.scrollY > hiddenAt && !nC.contains(css.hidden)) {
-          nC.add(css.hidden);
-        } else if (window.scrollY < this.lastY && nC.contains(css.hidden)) {
-          nC.remove(css.hidden);
-        }
-
-        this.lastY = window.scrollY;
-      }
-    }
-
-    const scrollEvents = new ScrollEvents();
+    window.addEventListener('scroll', handleScroll);
 
     return () => {
-      scrollEvents.removeEventListeners();
+      window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [lastY]);
 
   const toggleMenu = () => {
-    menuToggle(!menuState);
+    setMenuState((prev) => !prev);
   };
 
   return (
@@ -111,12 +69,17 @@ export default function Navbar() {
             </div>
           </button>
         </li>
-        <li data-open={menuState} className={css.menuContent}>
+        <li className={classNames(css.menuContent, { [css.menuOpen]: menuState })}>
           <ul>
             {content.map(({ url, title }, index) => (
-              <li key={index} className={currentPath === url ? 'bg-pink-600' : ''}>
+              <li
+                key={index}
+                className={classNames({
+                  [css.activeLink]: currentPath === url && url !== "/", // Tô màu nếu là mục hiện tại và không phải trang chủ
+                })}
+              >
                 <Link href={url}>
-                  <a className={`p-2 ${currentPath === url ? 'text-white' : ''} hover:underline underline-offset-4`}>
+                  <a className={`p-2 ${currentPath === url && url !== "/" ? 'text-white' : ''} hover:underline underline-offset-4`}>
                     {title}
                   </a>
                 </Link>

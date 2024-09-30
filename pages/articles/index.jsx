@@ -4,7 +4,7 @@ import matter from 'gray-matter'
 import Section from '../../components/sections/section'
 import css from '../../styles/sections/articles/recent.module.scss'
 
-// Path to your content directory
+// Path to content directory
 const articlesDirectory = path.join(process.cwd(), 'content/articles')
 
 export async function getStaticProps() {

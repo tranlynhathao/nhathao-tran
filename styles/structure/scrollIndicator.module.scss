@@ -1,0 +1,15 @@
+.scrollIndicator {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 4px;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.1);
+  z-index: 1000;
+}
+
+.scrollIndicatorBar {
+  width: 100%;
+  background-color: #00cfff;
+  transition: height 0.2s ease;
+}

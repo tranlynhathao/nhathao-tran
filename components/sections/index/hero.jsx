@@ -10,7 +10,6 @@ import hero from '../../../styles/sections/index/hero.module.scss';
 import button from '../../../styles/blocks/button.module.scss';
 import content from '../../../content/index/hero.json'
 
-
 /**
  * TO DO LIST
  *
@@ -48,7 +47,7 @@ export default function Hero() {
 				<section>
 					<h1 className={hero.header}>
 						{content.header.name}
-						</h1>
+          </h1>
 					<h1 className={`${hero.header} ${hero.primaryDim}`}>
 						{content.header.usp}
 					</h1>

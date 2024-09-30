@@ -14,7 +14,6 @@ export default function SetGridGap() {
 				const grid32 = readingWidth / 32
 				root.style.setProperty('--grid-32', `${grid32}px`)
 			}
-			
 		}
 		
 		setGapSize()
@@ -22,8 +21,7 @@ export default function SetGridGap() {
 		
 		return () => {
             window.removeEventListener( 'resize', setGapSize )
-        }
-
+    }
 	}, [] )
 
 	return (

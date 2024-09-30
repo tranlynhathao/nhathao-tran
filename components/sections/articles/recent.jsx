@@ -6,7 +6,6 @@ import Icon from '../../utils/icon.util';
 import css from '../../../styles/sections/articles/recent.module.scss';
 
 export default function Recent({ mediumArticles }) {
-  // Đảm bảo rằng feed và items tồn tại và items là một mảng
   const feed = mediumArticles?.feed || {};
   const articles = Array.isArray(mediumArticles?.items) ? mediumArticles.items : [];
 
@@ -28,8 +27,8 @@ export default function Recent({ mediumArticles }) {
                     src={thumbnail}
                     alt="Article thumbnail"
                     layout="responsive"
-                    width={600} // Điều chỉnh kích thước nếu cần
-                    height={400} // Điều chỉnh kích thước nếu cần
+                    width={600}
+                    height={400}
                   />
                 </span>
                 <span className={css.header}>

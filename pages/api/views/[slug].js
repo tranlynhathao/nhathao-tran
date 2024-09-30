@@ -1,7 +1,6 @@
 import db from '../../../lib/firebase';
 
 const handler = async (req, res) => {
-  // Tăng lượt xem
   if (req.method === 'POST') {
     const ref = db.ref('views').child(req.query.slug);
     const { snapshot } = await ref.transaction((currentViews) => {
@@ -22,7 +21,6 @@ const handler = async (req, res) => {
     });
   }
 
-  // Lấy số lượt xem
   if (req.method === 'GET') {
     const snapshot = await db.ref('views').child(req.query.slug).once('value');
     const views = snapshot.val();
