@@ -4,3 +4,4 @@
 - [ ] Scroll Indicator
 - [ ] Articles
 - [ ] Home page
+- [ ] Case Studies
