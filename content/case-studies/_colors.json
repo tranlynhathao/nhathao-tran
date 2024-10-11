@@ -1,10 +1,10 @@
 {
-	"dark": {
-		"mesh__secondaryDark": "#040404",
-		"mesh__secondaryLight": "#030303",
-		"mesh__primaryDark": "#050505",
-		"mesh__primaryLight": "#060606"
-	},
-	"light": {},
-	"unicorn": {}
+  "dark": {
+    "mesh__secondaryDark": "#040404",
+    "mesh__secondaryLight": "#030303",
+    "mesh__primaryDark": "#050505",
+    "mesh__primaryLight": "#060606"
+  },
+  "light": {},
+  "unicorn": {}
 }

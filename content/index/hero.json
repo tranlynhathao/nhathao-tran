@@ -1,35 +1,35 @@
 {
-	"intro": {
-		"start": "Welcome to my personal page!",
-		"end": "Hi there! My name is",
-		"speed": 60,
-		"deletionSpeed": 80,
-		"wrapper": "h2",
-		"startDelay": 1000,
-		"deleteDelay": 3000,
-		"restartDelay": 12000
-	},
+  "intro": {
+    "start": "Welcome to my personal page!",
+    "end": "Hi there! My name is",
+    "speed": 60,
+    "deletionSpeed": 80,
+    "wrapper": "h2",
+    "startDelay": 1000,
+    "deleteDelay": 3000,
+    "restartDelay": 12000
+  },
 
-	"header": {
-		"name": "Nhat-Hao Tran.",
-		"usp": "I explore technology with undying passion."
-	},
+  "header": {
+    "name": "Nhat-Hao Tran.",
+    "usp": "I explore technology with undying passion."
+  },
 
-	"paragraph": "I am currently a student, driven by a passion for science, with a desire to contribute to the development of technology to serve practical purposes and leave a lasting impact.",
+  "paragraph": "I am currently a student, driven by a passion for science, with a desire to contribute to the development of technology to serve practical purposes and leave a lasting impact.",
 
-	"buttons": {
-		"primary": {
-			"title": "Send me a message",
-			"url": "haotran04022005@gmail.com",
-			"leaveSite": false
-		},
-		"secondary": {
-			"title": "LinkedIn",
-			"url": "https://www.linkedin.com/in/tranlynhathao/",
-			"leaveSite": "true"
-		},
-		"resume": {
-			"title": "Resume"
-		}
-	}
+  "buttons": {
+    "primary": {
+      "title": "Send me a message",
+      "url": "haotran04022005@gmail.com",
+      "leaveSite": false
+    },
+    "secondary": {
+      "title": "LinkedIn",
+      "url": "https://www.linkedin.com/in/tranlynhathao/",
+      "leaveSite": "true"
+    },
+    "resume": {
+      "title": "Resume"
+    }
+  }
 }

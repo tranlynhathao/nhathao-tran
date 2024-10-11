@@ -1,28 +1,28 @@
 {
-	"acknowledgments": [
-		{
-			"person": "Vercel - Platform",
-			"link": "https://vercel.com/docs",
-			"note": "Host project!"
-		}
-	],
+  "acknowledgments": [
+    {
+      "person": "Vercel - Platform",
+      "link": "https://vercel.com/docs",
+      "note": "Host project!"
+    }
+  ],
 
-	"social": [
-		{
-			"url": "https://medium.com/@--nhathao0402",
-			"icon": "medium"
-		},
-		{
-			"url": "https://dev.to/tranlynhathao",
-			"icon": "dev"
-		},
-		{
-			"url": "https://www.linkedin.com/in/tranlynhathao/",
-			"icon": "linkedin"
-		},
-		{
-			"url": "https://github.com/tranlynhathao",
-			"icon": "github"
-		}
-	]
+  "social": [
+    {
+      "url": "https://medium.com/@--nhathao0402",
+      "icon": "medium"
+    },
+    {
+      "url": "https://dev.to/tranlynhathao",
+      "icon": "dev"
+    },
+    {
+      "url": "https://www.linkedin.com/in/tranlynhathao/",
+      "icon": "linkedin"
+    },
+    {
+      "url": "https://github.com/tranlynhathao",
+      "icon": "github"
+    }
+  ]
 }
