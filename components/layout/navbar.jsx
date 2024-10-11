@@ -6,55 +6,105 @@ import settings from '../../content/_settings.json';
 import content from '../../content/navbar.json';
 import css from '../../styles/structure/navbar.module.scss';
 import Logo from '../Logo';
-import classNames from 'classnames';
 
 export default function Navbar() {
   const router = useRouter();
-  const [menuState, setMenuState] = useState(false);
-  const [lastY, setLastY] = useState(0);
+  const [menuState, menuToggle] = useState(false);
   const currentPath = router.pathname;
 
-  // Reset menu when route changes
   useEffect(() => {
-    setMenuState(false);
-  }, [router.pathname]);
+    menuToggle(false);
+  }, []);
 
-  // Handle route change events
   useEffect(() => {
-    const handleRouteChange = () => setMenuState(false);
+    class RouteEvents {
+      constructor() {
+        console.log(
+          '%c☰  Navigation Router Events Loaded',
+          'background: #060708; color: #fff; padding: .125rem .75rem; border-radius: 5px; font-weight: 900; '
+        );
+        this.addEventListeners();
+      }
 
-    router.events.on('routeChangeComplete', handleRouteChange);
+      closeMenu() {
+        menuToggle(false);
+      }
+
+      addEventListeners() {
+        router.events.on('routeChangeComplete', this.closeMenu);
+      }
+
+      removeEventListeners() {
+        router.events.off('routeChangeComplete', this.closeMenu);
+      }
+    }
+
+    const routeEvents = new RouteEvents();
 
     return () => {
-      router.events.off('routeChangeComplete', handleRouteChange);
+      routeEvents.removeEventListeners();
     };
   }, [router.events]);
 
-  // Handle scroll events
   useEffect(() => {
-    const nav = document.querySelector('nav');
+    class ScrollEvents {
+      constructor() {
+        console.log(
+          '%c▼  Navigation Scroll Events Loaded',
+          'background: #060708; color: #fff; padding: .125rem .75rem; border-radius: 5px; font-weight: 900; '
+        );
 
-    const handleScroll = () => {
-      const hiddenAt = window.innerHeight / 2;
+        window.sticky = {};
+        window.sticky.nav = document.querySelector(`nav`);
 
-      if (window.scrollY > lastY && window.scrollY > hiddenAt && !nav.classList.contains(css.hidden)) {
-        nav.classList.add(css.hidden);
-      } else if (window.scrollY < lastY && nav.classList.contains(css.hidden)) {
-        nav.classList.remove(css.hidden);
+        this.addEventListeners();
       }
 
-      setLastY(window.scrollY);
-    };
+      addEventListeners() {
+        if (window.sticky.nav) {
+          window.addEventListener('DOMContentLoaded', this.maybeHideNav, false);
+          document.addEventListener('scroll', this.maybeHideNav, false);
+        }
+      }
 
-    window.addEventListener('scroll', handleScroll);
+      removeEventListeners() {
+        if (window.sticky.nav) {
+          window.removeEventListener(
+            'DOMContentLoaded',
+            this.maybeHideNav,
+            false
+          );
+          document.removeEventListener('scroll', this.maybeHideNav, false);
+        }
+      }
+
+      maybeHideNav() {
+        const nC = window.sticky.nav.classList;
+        const hiddenAt = window.innerHeight / 2;
+
+        if (
+          window.scrollY > this.lastY &&
+          window.scrollY > hiddenAt &&
+          !nC.contains(css.hidden)
+        ) {
+          nC.add(css.hidden);
+        } else if (window.scrollY < this.lastY && nC.contains(css.hidden)) {
+          nC.remove(css.hidden);
+        }
+
+        this.lastY = window.scrollY;
+      }
+    }
+
+    const scrollEvents = new ScrollEvents();
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      scrollEvents.removeEventListeners();
     };
-  }, [lastY]);
+  }, []);
 
   const toggleMenu = () => {
-    setMenuState((prev) => !prev);
+    menuToggle(!menuState);
   };
 
   return (
@@ -62,36 +112,59 @@ export default function Navbar() {
       <ul className={css.menu}>
         <li className={css.menuHeader}>
           <Logo />
-          <button onClick={toggleMenu} className={css.mobileToggle} data-open={menuState}>
+          <button
+            onClick={toggleMenu}
+            className={css.mobileToggle}
+            data-open={menuState}
+          >
             <div>
               <span></span>
               <span></span>
             </div>
           </button>
         </li>
-        <li className={classNames(css.menuContent, { [css.menuOpen]: menuState })}>
+        <li data-open={menuState} className={css.menuContent}>
           <ul>
-            {content.map(({ url, title }, index) => (
-              <li
-                key={index}
-                className={classNames({
-                  [css.activeLink]: currentPath === url && url !== "/", // Tô màu nếu là mục hiện tại và không phải trang chủ
-                })}
-              >
-                <Link href={url}>
-                  <a className={`p-2 ${currentPath === url && url !== "/" ? 'text-white' : ''} hover:underline underline-offset-4`}>
-                    {title}
-                  </a>
-                </Link>
-              </li>
-            ))}
+            {content.map(({ url, title }, index) => {
+              if (url === '#about-me') {
+                return (
+                  <li key={index}>
+                    <a
+                      href="about-me"
+                      className={`p-2 ${currentPath === url ? 'text-white' : ''} hover:underline underline-offset-4`}
+                    >
+                      {title}
+                    </a>
+                  </li>
+                );
+              }
+
+              return (
+                <li
+                  key={index}
+                  className={currentPath === url ? 'bg-pink-600' : ''}
+                >
+                  <Link href={url}>
+                    <a
+                      className={`p-2 ${currentPath === url ? 'text-white' : ''} hover:underline underline-offset-4`}
+                    >
+                      {title}
+                    </a>
+                  </Link>
+                </li>
+              );
+            })}
             <li>
               <ThemeMode />
             </li>
           </ul>
         </li>
       </ul>
-      <span onClick={toggleMenu} className={css.menuBlackout} data-open={menuState}></span>
+      <span
+        onClick={toggleMenu}
+        className={css.menuBlackout}
+        data-open={menuState}
+      ></span>
     </nav>
   );
 }

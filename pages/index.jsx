@@ -6,7 +6,7 @@ import Career from '../components/sections/index/career';
 // import FeaturedProjects from '../components/sections/projects/featured';
 import Color from '../components/utils/page.colors.util';
 import colors from '../content/index/_colors.json';
-import ResumeButton from '../components/ResumeButton';  // Import the ResumeButton component
+import ResumeButton from '../components/ResumeButton'; // Import the ResumeButton component
 
 export default function HomePage() {
   return (
@@ -16,7 +16,7 @@ export default function HomePage() {
       {/* <FeaturedProjects /> */}
       <About />
       {/*<Technical />*/}
-      <ResumeButton showIframe={false} />  {/* Hide iframe on homepage */}
+      <ResumeButton showIframe={false} /> {/* Hide iframe on homepage */}
     </>
   );
 }

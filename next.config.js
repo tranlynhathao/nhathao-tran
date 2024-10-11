@@ -1,4 +1,3 @@
-// next.config.js
 const withMDX = require('@next/mdx')({
   extension: /\.mdx?$/,
   options: {
@@ -41,6 +40,21 @@ module.exports = withMDX({
       {
         protocol: 'https',
         hostname: '**.medium.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'ositcom.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'hocspringboot.net',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.educba.com',
         pathname: '/**',
       },
     ],

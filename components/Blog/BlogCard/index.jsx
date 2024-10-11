@@ -1,5 +1,5 @@
-import Link from "next/link";
-import { AiOutlineEye } from "react-icons/ai";
+import Link from 'next/link';
+import { AiOutlineEye } from 'react-icons/ai';
 import useSWR from 'swr';
 
 const fetcher = async (args) => {

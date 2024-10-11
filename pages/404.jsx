@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from "../styles/scss/404.module.scss";
+import styles from '../styles/scss/404.module.scss';
 
 const Custom404 = () => {
   return (
@@ -8,6 +8,6 @@ const Custom404 = () => {
       <img src="/img/button_h.png" alt="Logo" className={styles.logo} />
     </div>
   );
-}
+};
 
 export default Custom404;

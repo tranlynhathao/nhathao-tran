@@ -6,7 +6,8 @@ const ScrollIndicator = () => {
 
   const updateScrollProgress = () => {
     const scrollTop = document.documentElement.scrollTop;
-    const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollHeight =
+      document.documentElement.scrollHeight - window.innerHeight;
     const progress = (scrollTop / scrollHeight) * 100;
     setScrollProgress(progress);
   };
@@ -18,7 +19,10 @@ const ScrollIndicator = () => {
 
   return (
     <div className={styles.scrollIndicator}>
-      <div className={styles.scrollIndicatorBar} style={{ height: `${scrollProgress}%` }} />
+      <div
+        className={styles.scrollIndicatorBar}
+        style={{ height: `${scrollProgress}%` }}
+      />
     </div>
   );
 };

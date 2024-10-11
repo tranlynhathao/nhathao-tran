@@ -1,10 +1,7 @@
 {
-  "extends": [
-    "next/core-web-vitals",
-    "plugin:prettier/recommended"
-  ],
-  "plugins": ["prettier"],
-  "rules": {
-    "prettier/prettier": ["error", { "tabWidth": 2, "useTabs": false }]
-  }
+	"extends": ["next/core-web-vitals", "plugin:prettier/recommended"],
+	"plugins": ["prettier"],
+	"rules": {
+		"prettier/prettier": ["error", { "tabWidth": 2, "useTabs": false }]
+	}
 }

@@ -2,153 +2,151 @@
 @import '../../scss/mixins';
 
 .section {
+  .area {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 
-	.area {
-		display: flex;
-		flex-direction: column;
-		gap: 1rem;
+    h3 {
+      margin-top: -0.25rem;
+      margin-bottom: 0.35rem;
+    }
 
-		h3 {
-			margin-top: - .25rem;
-			margin-bottom: .35rem;
-		}
-	
-		h4 {
-			font-size: .9rem;
-			margin-bottom: .25rem;
-			text-transform: none;
-			letter-spacing: 0;
-		}
-	
-		h5 {
-			font-size: .9rem;
-			margin-bottom: .25rem;
-			opacity: .5;
-		}
-	}
+    h4 {
+      font-size: 0.9rem;
+      margin-bottom: 0.25rem;
+      text-transform: none;
+      letter-spacing: 0;
+    }
 
-	.company {
-		position: relative;
-		display: flex;
-		flex-direction: row;
-		gap: 1rem;
-	}
+    h5 {
+      font-size: 0.9rem;
+      margin-bottom: 0.25rem;
+      opacity: 0.5;
+    }
+  }
 
-	.company,
-	.position {
-		border: 1px solid var(--primary-dark);
-		border-radius: 1rem;
-		overflow: hidden;
+  .company {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+  }
 
-		padding: var(--padding);
-		--padding: 2rem;
-		--padding-left: var(--padding);
-		--padding-top: var(--padding);
-		--padding-right: var(--padding);
-		--padding-bottom: var(--padding);
+  .company,
+  .position {
+    border: 1px solid var(--primary-dark);
+    border-radius: 1rem;
+    overflow: hidden;
 
-		background: var(--background-dim2);
-	}
+    padding: var(--padding);
+    --padding: 2rem;
+    --padding-left: var(--padding);
+    --padding-top: var(--padding);
+    --padding-right: var(--padding);
+    --padding-bottom: var(--padding);
 
-	.companyContent {
-		display: flex;
-		flex-direction: column;
-		gap: 1rem;
-		max-width: calc( var(--grid-32) * 20 );
-	}
+    background: var(--background-dim2);
+  }
 
-	.companyPositions {
-		display: flex;
-		flex-direction: column;
-		gap: 1rem;
-	}
+  .companyContent {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: calc(var(--grid-32) * 20);
+  }
 
-	.position {
-		margin-left: calc( var(--grid-32) * 2 );
-		background: var(--background-dim);
-		max-width: 100%;
+  .companyPositions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
 
-		&.first {
-			.content {
-				padding-bottom: 0;
-			}
-		}
+  .position {
+    margin-left: calc(var(--grid-32) * 2);
+    background: var(--background-dim);
+    max-width: 100%;
 
-		.positionContent {
-			position: relative;
-			display: flex;
-			flex-direction: column;
-			gap: 2rem;
+    &.first {
+      .content {
+        padding-bottom: 0;
+      }
+    }
 
-			.list {
-				display: flex;
-				flex-direction: column;
-				gap: .75rem;
+    .positionContent {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
 
-				.subList {
-					position: relative;
-					margin-left: 2rem;
-					margin-top: .5rem;
-					display: block;
-					color: var(--primary);
+      .list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
 
-					.bullet {
-						position: absolute;
-						margin-left: -1.5rem;
-						&:before {
-							content: "⇒";
-						}
-					}
-				}
-				
-			}
-		}
-	}
+        .subList {
+          position: relative;
+          margin-left: 2rem;
+          margin-top: 0.5rem;
+          display: block;
+          color: var(--primary);
 
-	.technicalSvg {
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		right: 0;
+          .bullet {
+            position: absolute;
+            margin-left: -1.5rem;
+            &:before {
+              content: '⇒';
+            }
+          }
+        }
+      }
+    }
+  }
 
-		img { 
-			transform: rotate(90deg);
-		}
-	}
+  .technicalSvg {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+
+    img {
+      transform: rotate(90deg);
+    }
+  }
 }
 
 @include media($max: $mobile) {
-	.section {
-		.area {
-			.company,
-			.position {
-				padding: 2rem 1rem;
-			}
-			.position {
-				padding-bottom: 1rem;
-				--padding-top: 1rem;
-			}
-			.companyContent {
-				max-width: 100%;
-			}
-			.positionContent {
-				gap: 1rem;
-				max-width: 100%;
-			}
-			p {
-				font-size: .8rem;
-			}
-			ul.list {
-				li {
-					font-size: .8rem;
-				}
-			}
-			
-			ul:not(.list) {
-				li {
-					font-size: .6rem;
-				}
-			}
-		}
-	}
+  .section {
+    .area {
+      .company,
+      .position {
+        padding: 2rem 1rem;
+      }
+      .position {
+        padding-bottom: 1rem;
+        --padding-top: 1rem;
+      }
+      .companyContent {
+        max-width: 100%;
+      }
+      .positionContent {
+        gap: 1rem;
+        max-width: 100%;
+      }
+      p {
+        font-size: 0.8rem;
+      }
+      ul.list {
+        li {
+          font-size: 0.8rem;
+        }
+      }
+
+      ul:not(.list) {
+        li {
+          font-size: 0.6rem;
+        }
+      }
+    }
+  }
 }

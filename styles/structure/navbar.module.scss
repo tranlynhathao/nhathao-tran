@@ -4,9 +4,9 @@
   position: fixed;
   z-index: 10;
   margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
-    width: 100vw;
-    max-width: 100vw;
+  margin-right: calc(50% - 50vw);
+  width: 100vw;
+  max-width: 100vw;
   padding: 0.25rem 0.75rem;
 
   &:not(.hidden) {
@@ -100,7 +100,7 @@
     height: 0;
     z-index: -1;
 
-    &[data-open="true"] {
+    &[data-open='true'] {
       height: 100vh;
     }
   }
@@ -142,7 +142,7 @@
       }
     }
 
-    &[data-open="true"] {
+    &[data-open='true'] {
       span {
         &:first-of-type {
           transform: rotate(45deg);
@@ -155,8 +155,8 @@
       }
     }
 
-    &[data-open="true"]:hover span:first-of-type,
-    &[data-open="true"]:hover span:last-of-type {
+    &[data-open='true']:hover span:first-of-type,
+    &[data-open='true']:hover span:last-of-type {
       width: 22px;
     }
 
@@ -173,16 +173,16 @@
 }
 
 .activeLink {
-    a {
-        color: var(--primary-bright) !important;
-        font-weight: bold;
-        text-decoration: underline;
-        text-underline-offset: 4px;
-    }
+  a {
+    color: var(--primary-bright) !important;
+    font-weight: bold;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
 
-    background-color: rgba(255, 255, 0, 0.3);
-    border-radius: 0.5rem;
-    padding: 0.25rem;
+  background-color: rgba(255, 255, 0, 0.3);
+  border-radius: 0.5rem;
+  padding: 0.25rem;
 }
 
 @include media($max: $mobile) {
@@ -214,10 +214,10 @@
       max-height: 0vh;
       overflow: hidden;
 
-      &[data-open="true"] {
+      &[data-open='true'] {
         transition: transform, cubic-bezier(0.4, 0, 0.2, 1), 300ms;
         max-height: 100vh;
-        transform: translate3d(0px,0px,1px);
+        transform: translate3d(0px, 0px, 1px);
       }
 
       ul {

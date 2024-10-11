@@ -1,57 +1,64 @@
-import fs from 'fs'
-import path from 'path'
-import matter from 'gray-matter'
-import Section from '../../components/sections/section'
-import css from '../../styles/sections/articles/recent.module.scss'
+import fs from 'fs';
+import path from 'path';
+import matter from 'gray-matter';
+import css from '../../styles/sections/articles/recent.module.scss';
 
-// Path to content directory
-const articlesDirectory = path.join(process.cwd(), 'content/articles')
+const articlesDirectory = path.join(process.cwd(), 'content/articles/mdx');
 
 export async function getStaticProps() {
-  // Read all files from the directory
-  const filenames = fs.readdirSync(articlesDirectory)
-  
-  // Get data from all articles
-  const articles = filenames.map(filename => {
-    const filePath = path.join(articlesDirectory, filename)
-    const fileContent = fs.readFileSync(filePath, 'utf-8')
-    const { data } = matter(fileContent)
+  const filenames = fs.readdirSync(articlesDirectory);
 
-    // Ensure all properties are defined and provide default values if needed
+  const articles = filenames.map((filename) => {
+    const filePath = path.join(articlesDirectory, filename);
+    const fileContent = fs.readFileSync(filePath, 'utf-8');
+    const { data } = matter(fileContent);
+
     return {
       title: data.title || 'Untitled',
-      pubDate: data.pubDate || new Date().toISOString(),
+      pubDate: data.publishedAt || new Date().toISOString(),
+      desc: data.desc || 'No description available.',
       link: `/articles/${filename.replace(/\.mdx$/, '')}`,
-      author: data.author || 'Unknown',
       thumbnail: data.thumbnail || '/default-thumbnail.jpg',
-      categories: data.categories || []
-    }
-  })
+      views: data.views || 0,
+    };
+  });
+
+  articles.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
 
   return {
     props: {
-      articles
-    }
-  }
+      articles,
+    },
+  };
 }
 
 export default function Articles({ articles }) {
   return (
-    <Section>
-      <div className={css.articlesContainer}>
-        {articles.map(({ title, pubDate, link, author, thumbnail, categories }) => (
-          <article key={link} className={css.article}>
-            <img src={thumbnail} alt="Article thumbnail" />
-            <h2><a href={link}>{title}</a></h2>
-            <p>By {author} on {new Date(pubDate).toDateString()}</p>
-            <div>
-              {categories.map((category, index) => (
-                <span key={index}>{category}</span>
-              ))}
+    <div className={css.articlesContainer}>
+      {articles.map(({ title, pubDate, desc, link, thumbnail, views }) => (
+        <article key={link} className={css.article}>
+          <div className={css.thumbnailContainer}>
+            <img
+              src={thumbnail}
+              alt={`${title} thumbnail`}
+              className={css.thumbnail}
+            />
+          </div>
+          <div className={css.articleContent}>
+            <h2>
+              <a href={link}>{title}</a>
+            </h2>
+            <p>{desc}</p>
+            <div className={css.articleMeta}>
+              <span>{new Date(pubDate).toLocaleDateString()}</span>
+              <span>
+                <i className="fas fa-eye"></i> {views}
+              </span>{' '}
+              {/* Hiển thị lượt xem */}
             </div>
-          </article>
-        ))}
-      </div>
-    </Section>
-  )
+          </div>
+        </article>
+      ))}
+    </div>
+  );
 }
