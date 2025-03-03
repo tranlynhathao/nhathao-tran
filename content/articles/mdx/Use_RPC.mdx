@@ -1,0 +1,82 @@
+---
+icon: '🔗'
+title: 'Understanding Remote Procedure Call (RPC)'
+desc: 'RPC is a powerful communication mechanism that allows different systems to interact seamlessly. In this article, I’ll explain how RPC works, its benefits, and how it is used in modern development, including microservices and distributed systems.'
+publishedAt: '2024-10-08'
+thumbnail: 'https://upload.wikimedia.org/wikipedia/commons/6/69/Remote_Procedure_Call.svg'
+---
+
+# Understanding Remote Procedure Call (RPC)
+
+Remote Procedure Call (RPC) is a fundamental concept in distributed computing that enables programs to execute functions on remote servers as if they were local. It abstracts the complexity of network communication, allowing developers to focus on functionality rather than low-level networking details.
+
+## 1. What is RPC?
+
+RPC allows a client application to invoke a function on a remote server without needing to explicitly manage network requests. It creates a seamless experience where remote method calls appear just like local function calls.
+
+### Key Characteristics
+
+- **Transparency**: Developers can call remote functions as if they were local.
+- **Interoperability**: RPC frameworks enable communication across different programming languages and platforms.
+- **Efficiency**: Often optimized with binary encoding (e.g., gRPC uses Protocol Buffers) to reduce payload size.
+
+### Example
+
+A simple example in **gRPC (Google’s RPC framework)**:
+
+```proto
+service UserService {
+  rpc GetUser (UserRequest) returns (UserResponse);
+}
+```
+
+This allows a client to call `GetUser()` remotely as if it were a local function.
+
+## 2. Why Use RPC?
+
+RPC is widely used in distributed systems, microservices, and cloud computing due to its efficiency and flexibility.
+
+### Key Benefits
+
+- Fast and lightweight: Binary encoding (like Protocol Buffers in gRPC) is faster than JSON-based APIs.
+- Structured communication: RPC supports well-defined interfaces, making it easier to manage services.
+- Better performance than REST: No unnecessary HTTP overhead, making it ideal for high-performance applications.
+
+## 3. Popular RPC Frameworks
+
+Here are some widely used RPC frameworks:
+
+- **gRPC**: Developed by Google, uses Protocol Buffers for high efficiency.
+- **JSON-RPC**: Lightweight RPC using JSON, commonly used in web apps.
+- **XML-RPC**: Older XML-based RPC format.
+- **Thrift**: Developed by Facebook, supports multiple languages.
+- **tRPC**: TypeScript-first RPC for full-stack TypeScript applications.
+
+## 4. RPC vs REST vs GraphQL
+
+While RPC, REST, and GraphQL are all used for communication between services, they serve different purposes:
+
+- **RPC** is optimized for performance with binary encoding (like gRPC) and structured interfaces.
+- **REST** follows HTTP conventions and is widely used for web APIs.
+- **GraphQL** allows flexible data fetching but comes with additional complexity.
+
+## 5. Real-World Use Cases
+
+RPC is widely used in:
+
+- **Microservices communication** (e.g., gRPC in Kubernetes-based architectures).
+- **Blockchain networks** (e.g., Bitcoin and Ethereum use JSON-RPC for API access).
+- **Gaming servers** (low-latency communication for multiplayer games).
+- **AI & Machine Learning** (RPC enables distributed model training across multiple nodes).
+
+## Conclusion
+
+Remote Procedure Call (RPC) is an essential technique in distributed computing that enhances efficiency and scalability. Whether you’re building microservices, real-time applications, or high-performance APIs, RPC provides a structured and performant way to enable communication between services.
+
+---
+
+**References:**
+
+- [gRPC Documentation](https://grpc.io/docs/)
+- [JSON-RPC Specification](https://www.jsonrpc.org/)
+- [Thrift by Apache](https://thrift.apache.org/)
